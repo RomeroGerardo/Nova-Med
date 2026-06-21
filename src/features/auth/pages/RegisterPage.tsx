@@ -6,7 +6,7 @@ import { User, Mail, Lock, Stethoscope, Building2, ArrowRight } from 'lucide-rea
 import { Logo } from '@/components/shared/Logo'
 import { useState } from 'react'
 import { toast } from 'sonner'
-import { supabase } from '@/lib/supabase'
+import { supabase, isDemoMode } from '@/lib/supabase'
 import { useAuthStore } from '@/stores/authStore'
 
 const registerSchema = z.object({
@@ -104,6 +104,21 @@ export function RegisterPage() {
             <p className="text-muted-foreground text-sm">14 días de prueba gratis · Sin tarjeta de crédito</p>
           </div>
 
+          {/* Demo Mode Banner */}
+          {isDemoMode && (
+            <div className="mb-5 flex items-start gap-2.5 p-3.5 bg-amber-50 border border-amber-200 rounded-xl">
+              <div className="size-4 text-amber-600 flex-shrink-0 mt-0.5 font-bold">!</div>
+              <div>
+                <p className="text-xs font-semibold text-amber-800">Modo Demo activo</p>
+                <p className="text-[11px] text-amber-700 mt-0.5 leading-relaxed">
+                  El registro de nuevas cuentas está deshabilitado. Por favor,{' '}
+                  <Link to="/login" className="font-bold underline">ve a Iniciar sesión</Link>{' '}
+                  y usa los botones de acceso demo.
+                </p>
+              </div>
+            </div>
+          )}
+
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4" noValidate>
             {/* Full Name */}
             <div>
@@ -178,12 +193,16 @@ export function RegisterPage() {
             <button
               id="register-submit"
               type="submit"
-              disabled={isLoading}
-              className="w-full flex items-center justify-center gap-2 bg-primary text-primary-foreground font-semibold py-3 rounded-lg hover:bg-primary/90 disabled:opacity-60 transition-all active:scale-[0.98] mt-2"
+              disabled={isLoading || isDemoMode}
+              className="w-full flex items-center justify-center gap-2 bg-primary text-primary-foreground font-semibold py-3 rounded-lg hover:bg-primary/90 disabled:opacity-40 disabled:cursor-not-allowed transition-all active:scale-[0.98] mt-2"
             >
               {isLoading
                 ? <span className="size-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                : <><span>Crear cuenta profesional</span><ArrowRight className="size-4" /></>
+                : isDemoMode ? (
+                  <span className="text-sm">No disponible en modo demo</span>
+                ) : (
+                  <><span>Crear cuenta profesional</span><ArrowRight className="size-4" /></>
+                )
               }
             </button>
 

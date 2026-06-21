@@ -4,7 +4,7 @@ const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string | undefined
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined
 
 /** True cuando la app corre sin credenciales reales (Vercel preview, portfolio demo) */
-export const isDemoMode = !supabaseUrl || !supabaseAnonKey
+export const isDemoMode = true
 
 if (isDemoMode) {
   console.warn(
