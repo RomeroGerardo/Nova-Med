@@ -1,0 +1,35 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background: rounded square Medical Blue -->
+  <rect width="200" height="200" rx="44" fill="#004aad"/>
+
+  <!-- Inner glow layer -->
+  <rect width="200" height="200" rx="44" fill="url(#glowGrad)" opacity="0.35"/>
+
+  <!-- Medical Cross — vertical bar -->
+  <rect x="84" y="40" width="32" height="120" rx="16" fill="white" opacity="0.95"/>
+
+  <!-- Medical Cross — horizontal bar -->
+  <rect x="40" y="84" width="120" height="32" rx="16" fill="white" opacity="0.95"/>
+
+  <!-- ECG / Pulse line threading through horizontal bar -->
+  <path
+    d="M30 100 H62 L70 68 L82 132 L94 68 L106 132 L118 100 H170"
+    stroke="#7ed957"
+    stroke-width="9"
+    fill="none"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- Subtle corner accent dots -->
+  <circle cx="28" cy="28" r="5" fill="#7ed957" opacity="0.4"/>
+  <circle cx="172" cy="172" r="5" fill="#7ed957" opacity="0.4"/>
+
+  <!-- Gradient definitions -->
+  <defs>
+    <radialGradient id="glowGrad" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#001945" stop-opacity="1"/>
+    </radialGradient>
+  </defs>
+</svg>

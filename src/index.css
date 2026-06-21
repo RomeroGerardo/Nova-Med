@@ -1,0 +1,178 @@
+@import '@fontsource-variable/inter';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* VitalTrack Professional - Light Mode */
+    --background: 220 60% 99%;
+    --foreground: 216 84% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 216 84% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 216 84% 11%;
+
+    /* Primary: Deep Medical Blue #004aad */
+    --primary: 217 100% 34%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary: Health Green #7ed957 */
+    --secondary: 101 61% 60%;
+    --secondary-foreground: 108 100% 8%;
+
+    --muted: 220 40% 96%;
+    --muted-foreground: 220 14% 47%;
+
+    --accent: 220 40% 94%;
+    --accent-foreground: 217 100% 28%;
+
+    --destructive: 0 84% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 32% 90%;
+    --input: 220 32% 90%;
+    --ring: 217 100% 34%;
+
+    --radius: 0.5rem;
+
+    /* Charts */
+    --chart-1: 217 100% 34%;
+    --chart-2: 101 61% 45%;
+    --chart-3: 38 92% 50%;
+    --chart-4: 280 65% 55%;
+    --chart-5: 340 75% 55%;
+
+    /* Sidebar */
+    --sidebar: 0 0% 100%;
+    --sidebar-foreground: 216 84% 11%;
+    --sidebar-border: 220 32% 90%;
+    --sidebar-width: 280px;
+    --sidebar-width-collapsed: 72px;
+  }
+
+  .dark {
+    --background: 216 56% 8%;
+    --foreground: 220 40% 96%;
+
+    --card: 216 50% 11%;
+    --card-foreground: 220 40% 96%;
+
+    --popover: 216 50% 11%;
+    --popover-foreground: 220 40% 96%;
+
+    --primary: 217 100% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 101 61% 50%;
+    --secondary-foreground: 108 100% 5%;
+
+    --muted: 216 40% 16%;
+    --muted-foreground: 220 14% 60%;
+
+    --accent: 216 40% 18%;
+    --accent-foreground: 217 80% 70%;
+
+    --destructive: 0 62% 38%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 216 40% 18%;
+    --input: 216 40% 18%;
+    --ring: 217 100% 60%;
+
+    --chart-1: 217 80% 60%;
+    --chart-2: 101 61% 55%;
+    --chart-3: 38 92% 60%;
+    --chart-4: 280 65% 65%;
+    --chart-5: 340 75% 65%;
+
+    --sidebar: 216 50% 10%;
+    --sidebar-foreground: 220 40% 92%;
+    --sidebar-border: 216 40% 18%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter antialiased;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/40;
+  }
+}
+
+@layer components {
+  /* Glass morphism card */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  .dark .glass-card {
+    background: rgba(10, 20, 40, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* Premium shadow */
+  .shadow-premium {
+    box-shadow:
+      0 1px 3px rgba(0, 74, 173, 0.06),
+      0 8px 24px rgba(0, 74, 173, 0.08),
+      0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+
+  /* Health metric card */
+  .metric-card {
+    @apply bg-card border border-border rounded-xl p-5 shadow-premium hover:shadow-md transition-shadow duration-200;
+  }
+
+  /* Status chip */
+  .status-chip {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold;
+  }
+  .status-chip-green {
+    @apply status-chip bg-vt-green-50 text-vt-green-600;
+  }
+  .status-chip-blue {
+    @apply status-chip bg-vt-blue-50 text-vt-blue-600;
+  }
+  .status-chip-amber {
+    @apply status-chip bg-amber-50 text-amber-700;
+  }
+  .status-chip-red {
+    @apply status-chip bg-red-50 text-red-700;
+  }
+
+  /* Data mono text */
+  .data-mono {
+    @apply font-mono text-sm tracking-tight;
+  }
+
+  /* Sidebar transition */
+  .sidebar-transition {
+    @apply transition-all duration-300 ease-in-out;
+  }
+}
+
+/* Base UI + Radix fix */
+[data-base-ui-popup],
+[data-base-ui-positioner] {
+  pointer-events: auto !important;
+  z-index: 5000 !important;
+}
