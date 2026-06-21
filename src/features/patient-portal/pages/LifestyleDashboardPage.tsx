@@ -13,7 +13,6 @@ import {
   Calendar,
   Settings2,
   Check,
-  ChevronDown
 } from 'lucide-react'
 import { useAuthStore } from '@/stores/authStore'
 import { useLifestyleStore } from '@/stores/lifestyleStore'

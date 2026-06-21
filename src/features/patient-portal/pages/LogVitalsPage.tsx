@@ -116,7 +116,7 @@ const vitalFields: VitalField[] = [
   },
 ]
 
-function getWarning(key: string, value: number, field: VitalField): string | null {
+function getWarning(_key: string, value: number, field: VitalField): string | null {
   if (!field.normalMin || !field.normalMax) return null
   if (value < field.normalMin) return `⚠️ Valor bajo. Lo normal es ${field.hint}`
   if (value > field.normalMax) return `⚠️ Valor alto. Lo normal es ${field.hint}`
